@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
-    @Query("select p from Produto p join p.produtos where produtos.preco > :preco")
+    @Query("select p from Produto p where p.preco > :preco")
     List<Produto> findByMaiorPreco(Double preco);
 
-    @Query("select p from Produto p join p.produtos where produtos.preco < :preco")
+    @Query("select p from Produto p where p.preco < :preco")
     List<Produto> findByMenorPreco(Double preco);
 
     @Query("SELECT p FROM Produto p WHERE p.nome LIKE :nome%")

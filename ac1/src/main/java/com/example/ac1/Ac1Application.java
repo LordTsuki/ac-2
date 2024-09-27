@@ -21,7 +21,7 @@ public class Ac1Application {
 			@Autowired ProdutoRepository produtoRepository,
 			@Autowired CategoriaProdutoRepository categoriaProdutoRepository) {return args -> {
 			List<CategoriaProduto> listaCategorias = categoriaProdutoRepository.findAll();
-			listaCategorias.stream().map(c -> c.getNome()).forEach(System.out::println);
+			listaCategorias.stream().map(p -> p.getNome()).forEach(System.out::println);
 
 			System.out.println("*** CRIANDO OS PRODUTOS ***");
 			produtoRepository.save(new Produto(0L, "Geladeira", 2000.45, listaCategorias.get(0)));
@@ -29,24 +29,24 @@ public class Ac1Application {
 			
 			System.out.println("*** LISTANDO OS PRODUTOS ***");
 			List<Produto> listaProdutos = produtoRepository.findAll();
-			listaProdutos.stream().map(x -> x.getNome()).forEach(System.out::println);
+			listaProdutos.stream().map(p -> p.getNome()).forEach(System.out::println);
 
 			System.out.println("*** LISTAR POR NOME ***");
 			listaProdutos = produtoRepository.findByNome("Computador");
-			listaProdutos.stream().map(x -> x.getNome()).forEach(System.out::println);
+			listaProdutos.stream().map(p -> p.getNome()).forEach(System.out::println);
 
 			System.out.println("*** LISTAR POR PRECO MAIOR ***");
 			listaProdutos = produtoRepository.findByMaiorPreco(2415.11);
-			listaProdutos.stream().map(x -> x.getNome()).forEach(System.out::println);
-			listaProdutos.stream().map(x -> x.getPreco()).forEach(System.out::println);
+			listaProdutos.stream().map(p -> p.getNome()).forEach(System.out::println);
+			listaProdutos.stream().map(p -> p.getPreco()).forEach(System.out::println);
 
 			System.out.println("*** LISTAR POR PRECO MENOR ***");
 			listaProdutos = produtoRepository.findByMenorPreco(2415.11);
-			listaProdutos.stream().map(x -> x.getNome()).forEach(System.out::println);
-			listaProdutos.stream().map(x -> x.getPreco()).forEach(System.out::println);
+			listaProdutos.stream().map(p -> p.getNome()).forEach(System.out::println);
+			listaProdutos.stream().map(p -> p.getPreco()).forEach(System.out::println);
 
-			CategoriaProduto cc = categoriaProdutoRepository.findCategoriaProdutoFetchProdutos((long) 1);
-			System.out.println(cc.getProdutos().size());
+			CategoriaProduto pp = categoriaProdutoRepository.findCategoriaProdutoFetchProdutos((long) 1);
+			System.out.println(pp.getProdutos().size());
 			};
 		}
 
