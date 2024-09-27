@@ -19,15 +19,7 @@ public class Ac1Application {
 	@Bean
 	public CommandLineRunner init(
 			@Autowired ProdutoRepository produtoRepository,
-			@Autowired CategoriaProdutoRepository categoriaProdutoRepository) {
-		return args -> {
-			/*System.out.println("*** CRIANDO AS CATEGORIAS ***");
-			CategoriaProduto c1 = categoriaProdutoRepository.save(
-					new CategoriaProduto(0, "Eletrodomestico"));
-			CategoriaProduto c2 = categoriaProdutoRepository.save(
-					new CategoriaProduto(0, "Informatica"));
-			System.out.println("*** LISTANDO AS CATEGORIAS ***");
-			*/
+			@Autowired CategoriaProdutoRepository categoriaProdutoRepository) {return args -> {
 			List<CategoriaProduto> listaCategorias = categoriaProdutoRepository.findAll();
 			listaCategorias.stream().map(c -> c.getNome()).forEach(System.out::println);
 
@@ -55,9 +47,8 @@ public class Ac1Application {
 
 			CategoriaProduto cc = categoriaProdutoRepository.findCategoriaProdutoFetchProdutos((long) 1);
 			System.out.println(cc.getProdutos().size());
-
-		};
-	}
+			};
+		}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Ac1Application.class, args);
